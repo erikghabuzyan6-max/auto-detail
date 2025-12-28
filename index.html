@@ -6,7 +6,7 @@
 <title>Auto Detailing Pro</title>
 
 <style>
-
+/* ===== GLOBAL ===== */
 html { scroll-behavior: smooth; }
 
 body {
@@ -16,7 +16,7 @@ body {
   color: #333;
 }
 
-
+/* ===== HEADER ===== */
 header {
   background: #111;
   color: white;
@@ -31,7 +31,7 @@ nav a {
   font-weight: bold;
 }
 
-
+/* ===== HERO ===== */
 .hero {
   position: relative;
   background: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738') center/cover no-repeat;
@@ -80,7 +80,7 @@ nav a {
 .call-btn { background: #111; color: #fff; }
 .message-btn { background: #2ecc71; color: #fff; }
 
-
+/* ===== SECTIONS ===== */
 section {
   padding: 60px 20px;
   max-width: 1100px;
@@ -92,7 +92,7 @@ h2 {
   margin-bottom: 40px;
 }
 
-
+/* ===== SERVICES ===== */
 .service-list {
   display: flex;
   flex-wrap: wrap;
@@ -134,7 +134,7 @@ h2 {
   transform: scale(1.05);
 }
 
-
+/* ===== FORM ===== */
 form {
   background: white;
   padding: 35px;
@@ -144,24 +144,32 @@ form {
   box-shadow: 0 4px 12px rgba(0,0,0,.1);
 }
 
-input, select, textarea {
+/* 🔥 FIXED FORM WIDTH */
+form input,
+form select,
+form textarea,
+form button {
   width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   margin: 10px 0;
   font-size: 1em;
 }
 
-button {
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+form button {
   background: #111;
   color: white;
-  padding: 15px;
-  border: none;
-  width: 100%;
   font-size: 1.1em;
+  border: none;
   cursor: pointer;
 }
 
-
+/* ===== SCROLL REVEAL ===== */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -173,7 +181,7 @@ button {
   transform: translateY(0);
 }
 
-
+/* ===== FOOTER ===== */
 footer {
   background: #111;
   color: white;
@@ -181,7 +189,7 @@ footer {
   padding: 25px;
 }
 
-
+/* ===== MOBILE FIXES ===== */
 @media (max-width: 768px) {
 
   header h1 { font-size: 1.5em; }
@@ -269,12 +277,9 @@ footer {
 <h2>Book a Service</h2>
 
 <form action="https://formspree.io/f/xpqazgdk" method="POST">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="text" name="address" placeholder="Your Address (number, street, apt, ZIP)" required>
-  <input type="tel" name="phone" placeholder="Phone Number" required>
-</form>
-
-
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="text" name="address" placeholder="Your Address (number, street, apt, ZIP)" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
 
 <select name="service" id="serviceSelect" required>
 <option value="">Select a Service</option>
@@ -323,8 +328,3 @@ cards.forEach(card => {
 
 </body>
 </html>
-
-
-
-
-
