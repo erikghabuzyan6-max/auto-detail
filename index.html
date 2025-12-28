@@ -7,13 +7,11 @@
 
 <style>
 /* ===== GLOBAL ===== */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
+  font-family: Arial, sans-serif;
   background: #f5f5f5;
   color: #333;
 }
@@ -21,32 +19,57 @@ body {
 /* ===== HEADER ===== */
 header {
   background: #111;
-  color: #fff;
-  padding: 20px 0;
+  color: white;
   text-align: center;
+  padding: 18px 0;
 }
 
 nav a {
   color: white;
-  margin: 0 15px;
+  margin: 0 12px;
   text-decoration: none;
   font-weight: bold;
 }
 
 /* ===== HERO ===== */
 .hero {
+  position: relative;
   background: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738') center/cover no-repeat;
-  height: 420px;
+  min-height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
   color: white;
+  padding: 20px;
+}
+
+.hero h2 {
+  font-size: 2.4em;
+  line-height: 1.2;
   text-shadow: 2px 2px 6px rgba(0,0,0,.7);
 }
 
+.hero-buttons {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
 .hero-buttons a {
-  margin: 10px;
   padding: 14px 24px;
   border-radius: 8px;
   font-weight: bold;
@@ -95,7 +118,6 @@ h2 {
   box-shadow: 0 12px 30px rgba(0,0,0,.25);
 }
 
-/* Glow */
 .service-item::before {
   content: "";
   position: absolute;
@@ -105,9 +127,7 @@ h2 {
   transition: opacity .35s;
 }
 
-.service-item:hover::before {
-  opacity: 1;
-}
+.service-item:hover::before { opacity: 1; }
 
 .service-item.selected {
   outline: 3px solid #2ecc71;
@@ -128,6 +148,7 @@ input, select, textarea {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
+  font-size: 1em;
 }
 
 button {
@@ -136,6 +157,7 @@ button {
   padding: 15px;
   border: none;
   width: 100%;
+  font-size: 1.1em;
   cursor: pointer;
 }
 
@@ -158,6 +180,39 @@ footer {
   text-align: center;
   padding: 25px;
 }
+
+/* ===== MOBILE FIXES ===== */
+@media (max-width: 768px) {
+
+  header h1 { font-size: 1.5em; }
+
+  nav a {
+    margin: 0 8px;
+    font-size: 0.95em;
+  }
+
+  .hero h2 {
+    font-size: 1.6em;
+    line-height: 1.3;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons a {
+    width: 85%;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 1.05em;
+  }
+
+  .service-item {
+    width: 100%;
+    max-width: 360px;
+  }
+}
 </style>
 </head>
 
@@ -173,7 +228,7 @@ footer {
 </header>
 
 <section class="hero">
-  <div>
+  <div class="hero-content">
     <h2>Professional Auto Detailing That Makes Your Car Look Brand New</h2>
     <div class="hero-buttons">
       <a href="#booking" class="book-btn">Book Now</a>
@@ -194,7 +249,7 @@ footer {
 
 <div class="service-item reveal" data-service="Exterior Polishing">
 <h3>Exterior Polishing</h3>
-<p>Paint correction & swirl removal.</p>
+<p>Paint correction and swirl removal.</p>
 </div>
 
 <div class="service-item reveal" data-service="Ceramic Coating">
@@ -237,7 +292,7 @@ footer {
 </footer>
 
 <script>
-/* ===== REVEAL ON SCROLL ===== */
+/* Reveal on scroll */
 function reveal() {
   document.querySelectorAll('.reveal').forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight - 100) {
@@ -248,7 +303,7 @@ function reveal() {
 window.addEventListener('scroll', reveal);
 window.addEventListener('load', reveal);
 
-/* ===== SERVICE CLICK ===== */
+/* Service click → auto select */
 const cards = document.querySelectorAll('.service-item');
 const select = document.getElementById('serviceSelect');
 
